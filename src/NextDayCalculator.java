@@ -9,7 +9,11 @@ public class NextDayCalculator {
         {
             day = StartOfMonth;
             month++;
-
+            if(month > EndOfYear)
+            {
+                month = 1;
+                year++;
+            }
         }
         else
         {
