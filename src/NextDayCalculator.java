@@ -28,7 +28,12 @@ public class NextDayCalculator {
                 EndOfMonth = 31;
                 break;
             case 2:
-                if (!NamNhuan(year)) {
+                if (NamNhuan(year))
+                {
+                    EndOfMonth = 29;
+                }
+                else
+                {
                     EndOfMonth = 28;
                 }
                 break;
