@@ -4,6 +4,19 @@ public class NextDayCalculator {
     public static final int StartOfMonth = 1;
     public static String getNextDay(int day, int month,int year)
     {
+        int EndOfMonth = getEndOfMonth(month);
+        if(day == EndOfMonth)
+        {
+            day = StartOfMonth;
+            month++;
+        }
+        else
+        {
+            day++;
+        }
+        return day + CONCATENATION + month + CONCATENATION + year ;
+    }
+    private static int getEndOfMonth(int month) {
         int EndOfMonth = 0;
         switch (month){
             case 1:
@@ -23,15 +36,6 @@ public class NextDayCalculator {
                 EndOfMonth = 30;
                 break;
         }
-        if(day == EndOfMonth)
-        {
-            day = StartOfMonth;
-            month++;
-        }
-        else
-        {
-            day++;
-        }
-        return day + CONCATENATION + month + CONCATENATION + year ;
+        return EndOfMonth;
     }
 }
