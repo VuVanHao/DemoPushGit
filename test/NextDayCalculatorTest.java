@@ -50,4 +50,13 @@ class NextDayCalculatorTest {
         String expected = "1/3/2020";
         assertEquals(expected,result);
     }
+    @org.junit.jupiter.api.Test
+    void TestDay31Month12Year2021(){
+        int dayTest = 31;
+        int monthTest = 12;
+        int yearTest = 2021;
+        String result = NextDayCalculator.getNextDay(dayTest,monthTest,yearTest);
+        String expected = "1/1/2022";
+        assertEquals(expected,result);
+    }
 }

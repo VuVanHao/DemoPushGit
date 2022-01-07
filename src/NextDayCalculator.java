@@ -1,6 +1,7 @@
 public class NextDayCalculator {
     public static String CONCATENATION = "/";
     public static final int StartOfMonth = 1;
+    public static final int EndOfYear = 12;
     public static String getNextDay(int day, int month,int year)
     {
         int EndOfMonth = getEndOfMonth(day,month,year);
@@ -8,6 +9,7 @@ public class NextDayCalculator {
         {
             day = StartOfMonth;
             month++;
+
         }
         else
         {
