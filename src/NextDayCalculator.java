@@ -2,24 +2,33 @@ public class NextDayCalculator {
     public static String CONCATENATION = "/";
     public static final int StartOfMonth = 1;
     public static final int EndOfYear = 12;
+    public static final int StartOfYear = 1;
+
     public static String getNextDay(int day, int month,int year)
     {
-        int EndOfMonth = getEndOfMonth(day,month,year);
-        if(day == EndOfMonth)
+        if(NgayHopLe(day,month,year))
         {
-            day = StartOfMonth;
-            month++;
-            if(month > EndOfYear)
+            int EndOfMonth = getEndOfMonth(day,month,year);
+            if(day == EndOfMonth)
             {
-                month = 1;
-                year++;
+                day = StartOfMonth;
+                month++;
+                if(month > EndOfYear)
+                {
+                    month = StartOfYear;
+                    year++;
+                }
             }
+            else
+            {
+                day++;
+            }
+            return day + CONCATENATION + month + CONCATENATION + year;
         }
         else
         {
-            day++;
+            return "Ngày Không Hợp Lệ";
         }
-        return day + CONCATENATION + month + CONCATENATION + year ;
     }
     private static int getEndOfMonth(int day, int month, int year ) {
         int EndOfMonth = 0;
@@ -62,5 +71,22 @@ public class NextDayCalculator {
         {
             return false;
         }
+    }
+    private static boolean NgayHopLe( int day,int month,int year)
+    {
+        boolean bResult = true; // Giả sử ngày hợp lệ
+        if (!(year > 0 && month > 0))
+        {
+            bResult = false; // Kiểm tra tính hợp lệ của năm
+        }
+        if (!(month >= 1 && month <= 12))
+        {
+            bResult = false; // Kiểm tra tính hợp lệ của tháng
+        }
+        if (!(day >= 1 && day <= getEndOfMonth(day,month,year)))
+        {
+            bResult = false; // Kiểm tra tính hợp lệ của ngày
+        }
+        return bResult;
     }
 }
