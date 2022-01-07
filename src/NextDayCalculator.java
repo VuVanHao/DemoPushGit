@@ -1,10 +1,9 @@
 public class NextDayCalculator {
     public static String CONCATENATION = "/";
-    public  static  final int EndOfMonth = 31;
     public static final int StartOfMonth = 1;
     public static String getNextDay(int day, int month,int year)
     {
-        int EndOfMonth = getEndOfMonth(month);
+        int EndOfMonth = getEndOfMonth(day,month,year);
         if(day == EndOfMonth)
         {
             day = StartOfMonth;
@@ -16,7 +15,7 @@ public class NextDayCalculator {
         }
         return day + CONCATENATION + month + CONCATENATION + year ;
     }
-    private static int getEndOfMonth(int month) {
+    private static int getEndOfMonth(int day, int month, int year ) {
         int EndOfMonth = 0;
         switch (month){
             case 1:
@@ -29,6 +28,10 @@ public class NextDayCalculator {
                 EndOfMonth = 31;
                 break;
             case 2:
+                if (!NamNhuan(year)) {
+                    EndOfMonth = 28;
+                }
+                break;
             case 4:
             case 6:
             case 9:
@@ -37,5 +40,16 @@ public class NextDayCalculator {
                 break;
         }
         return EndOfMonth;
+    }
+    private static boolean NamNhuan(int year)
+    {
+        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
