@@ -6,8 +6,6 @@ public class NextDayCalculator {
 
     public static String getNextDay(int day, int month,int year)
     {
-        if(NgayHopLe(day,month,year))
-        {
             int EndOfMonth = getEndOfMonth(day,month,year);
             if(day == EndOfMonth)
             {
@@ -24,11 +22,7 @@ public class NextDayCalculator {
                 day++;
             }
             return day + CONCATENATION + month + CONCATENATION + year;
-        }
-        else
-        {
-            return "Ngày Không Hợp Lệ";
-        }
+
     }
     private static int getEndOfMonth(int day, int month, int year ) {
         int EndOfMonth = 0;
